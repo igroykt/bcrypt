@@ -2,14 +2,22 @@ extern crate bcrypt;
 
 use bcrypt::{DEFAULT_COST, hash, verify};
 use std::{env};
+use std::process;
 
 fn main() {
     let args: Vec<String> = env::args().collect();
     if args.len() == 1 {
         println!("Error: Provide arguments");
     } else if args[1] == "-verify" {
+        if args.len() <= 3 {
+            println!("Error: Provide arguments");
+            process::exit(1);
+        }
         let result = verify(args[2].to_string(), &args[3]);
-        println!("{:?}", result);
+        match result {
+            Ok(result) =>  println!("{:?}", result),
+            Err(e) => println!("{:?}", e)
+        }
     } else if args[1] == "-h" || args[1] == "--help" {
         help();
     } else {
