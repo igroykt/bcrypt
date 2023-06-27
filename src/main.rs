@@ -30,9 +30,9 @@ fn help() {
     println!("bcrypt v1.0
 Author: igroykt (c)2023. Written on Rust.\n
 Usage:
-    bcrypt <string>
+    bcrypt '<string>'
         generate hash
-    bcrypt -verify <string> <hash>
+    bcrypt -verify '<string>' '<hash>'
         verify hash
     bcrypt -h
         print help
